@@ -1,0 +1,33 @@
+.navbar{
+    background-color: #007810;
+    display: flex;
+}
+.home-link{
+    flex-grow: 1;
+    padding: 0.1em;
+    margin: 0;
+    font-weight: 500;
+    font-size: 1.25em;
+}
+.home-link a{
+    color: #FFF;
+}
+.navbar-links{
+    display:flex;
+    list-style: none;
+    margin-bottom: 0%;
+}
+.navbar-link{
+    padding-top: auto;
+    padding-bottom: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.navbar-link a{
+    padding: 0 0.75em;
+    text-align: center;
+    color: #AAA;
+}
+.navbar-link .active{
+    color: #FFF
+}
