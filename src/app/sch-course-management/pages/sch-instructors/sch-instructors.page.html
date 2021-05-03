@@ -1,0 +1,25 @@
+<h2>Instructors</h2>
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Full Name</th>
+                <th>Instructor Discipline</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor='let instructor of instructors'>
+                <td>{{ instructor.firstName + " " + instructor.lastName }}</td>
+                <td>{{ instructor.discipline }}</td>
+                <td class="control-column">
+                    <button type="button" class="btn btn-primary" (click)="editInstructor(instructor.id)">Edit</button>
+                    <button type="button" class="btn btn-danger" (click)="deleteInstructor(instructor.id)">Delete</button>
+                </td>
+            </tr>
+            <tr *ngIf="!isLoading && (!instructors || instructors.length == 0)">
+                <td colspan="3">There are no instructors</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

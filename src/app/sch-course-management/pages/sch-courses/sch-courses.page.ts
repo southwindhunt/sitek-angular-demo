@@ -2,6 +2,7 @@ import { Component } from "@angular/core";
 
 import { BasePage } from "src/app/sch-common/pages/base.page";
 import { Course } from '../../../sch-common/models';
+import { CoursesService } from "../../services/courses.service";
 
 @Component({
     selector: 'sch-courses',
@@ -10,23 +11,23 @@ import { Course } from '../../../sch-common/models';
 })
 
 export class SchCoursesPage extends BasePage{
-    courses: Array<Course> = [
-        {
-            id: 1,
-            readableId : 'CAL001',
-            name: 'Calculus 1'
-        },
-        {
-            id: 2,
-            readableId : 'BIO001',
-            name: 'Basic Biology'
-        },
-        {
-            id: 3,
-            readableId : 'BOT001',
-            name: 'Basic Botany'
-        }
-    ];
+    courses: Array<Course> = [];
+
+    constructor(private CoursesService: CoursesService){
+        super();
+    }
+
+    onChildInit():void{
+        this.getCourses();
+    }
+
+    getCourses():void{
+        this.CoursesService.getCourses().subscribe(res =>{
+            this.courses = res;
+        }, err =>{
+            this.courses = [];
+        })
+    }
 
     editCourse(courseId: number){
         var course = this.courses.find(x=>x.id == courseId);
@@ -39,7 +40,15 @@ export class SchCoursesPage extends BasePage{
         return;
     }
     deleteCourse(courseId: number){
-        this.courses = this.courses.filter(x=>x.id != courseId);
+        var loadingKey = "deleteCourse";
+        this.setLoading(loadingKey, true);
+        this.CoursesService.deleteCourse(courseId).subscribe(res =>{
+            this.setLoading(loadingKey, false);
+            this.getCourses();
+        }, err =>{
+            this.setLoading(loadingKey, false);
+            console.log('there was an error with deleting');
+        });
     }
 }
 

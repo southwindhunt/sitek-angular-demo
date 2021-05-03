@@ -1,7 +1,18 @@
-export abstract class BasePage{
+import { Component, OnInit } from "@angular/core";
+
+@Component({
+    template: 'base-page'
+})
+
+export abstract class BasePage implements OnInit{
 
     isLoading: boolean = false;
     loadingList: Map<string, boolean> = new Map<string, boolean>();
+
+    abstract onChildInit(): void;
+    ngOnInit(){
+        this.onChildInit();
+    }
 
     setLoading(loadingKey: string, value: boolean): void{
         this.loadingList.set(loadingKey, value);
