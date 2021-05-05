@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { SchCourseManagementPage } from './pages/sch-course-management.page';
 import { SchCoursesPage } from './pages/sch-courses/sch-courses.page';
 import { SchInstructorsPage } from './pages/sch-instructors/sch-instructors.page';
+import { SchAddCoursePage } from './pages/sch-add-course/sch-add-course.page';
 
 const routes: Routes = [
     {
@@ -16,6 +17,19 @@ const routes: Routes = [
             {
                 path: 'instructors',
                 component: SchInstructorsPage
+            },
+            {
+                path: 'courses/add',
+                component: SchAddCoursePage
+            },
+            {
+                path: 'courses/edit/:id',
+                component: SchAddCoursePage
+            },
+            {
+                path: 'courses/edit',
+                redirectTo: 'courses/add',
+                pathMatch: 'full'
             }
         ]
     }

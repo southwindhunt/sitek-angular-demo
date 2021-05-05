@@ -5,6 +5,7 @@ import { SchCommonModule } from 'src/app/sch-common/sch-common.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { managementServices } from './sch-course-management/services';
+import { commonServices } from './sch-common/services';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,7 @@ import { managementServices } from './sch-course-management/services';
     AppRoutingModule,
     SchCommonModule
   ],
-  providers: [managementServices],
+  providers: [managementServices, commonServices],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

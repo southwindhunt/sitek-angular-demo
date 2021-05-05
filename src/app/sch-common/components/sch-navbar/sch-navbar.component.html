@@ -1,10 +1,17 @@
 <div class="navbar">
     <h1 class="home-link"><a [routerLink]='["/"]' >Course management home</a></h1>
     <ul class="navbar-links">
-        <li class="navbar-link"><a [routerLink]="['/management', 'courses']" routerLinkActive='active'>Courses</a></li>
-        <li class="navbar-link"><a [routerLink]="['/management', 'instructors']" routerLinkActive='active'>Instructors</a></li>
-        <li class="navbar-link"><a [routerLink]="['/management', 'students']" routerLinkActive='active'>Students</a></li>
-        <li class="navbar-link"><a [routerLink]="['reports']" routerLinkActive='active'>Reports</a></li>
-        <li class="navbar-link"><a [routerLink]="['/login']" routerLinkActive='active'>Log Out</a></li>
+        <li class="navbar-link"><a [routerLink]="['/management', 'courses']" routerLinkActive='active' [routerLinkActiveOptions]="{exact:
+            true}">Courses</a></li>
+        <li class="navbar-link"><a [routerLink]="['/management', 'instructors']" routerLinkActive='active' [routerLinkActiveOptions]="{exact:
+            true}">Instructors</a></li>
+        <li class="navbar-link"><a [routerLink]="['/management', 'students']" routerLinkActive='active' [routerLinkActiveOptions]="{exact:
+            true}">Students</a></li>
+        <li class="navbar-link"><a [routerLink]="['/reports']" routerLinkActive='active' [routerLinkActiveOptions]="{exact:
+            true}">Reports</a></li>
+        <li class="navbar-link"><a [routerLink]="['/']" *ngIf="isLoggedIn; else loginprompt">Log Out</a></li>
+        <ng-template #loginprompt>
+            <li class="navbar-link"><a [routerLink]="['/']">Log In</a></li>
+        </ng-template>
     </ul>
 </div>

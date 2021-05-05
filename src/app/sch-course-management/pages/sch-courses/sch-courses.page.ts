@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { Router } from "@angular/router";
 
 import { BasePage } from "src/app/sch-common/pages/base.page";
 import { Course } from '../../../sch-common/models';
@@ -13,7 +14,7 @@ import { CoursesService } from "../../services/courses.service";
 export class SchCoursesPage extends BasePage{
     courses: Array<Course> = [];
 
-    constructor(private CoursesService: CoursesService){
+    constructor(private CoursesService: CoursesService, private router: Router){
         super();
     }
 
@@ -30,13 +31,12 @@ export class SchCoursesPage extends BasePage{
     }
 
     editCourse(courseId: number){
-        var course = this.courses.find(x=>x.id == courseId);
-        if(!course){
+        if(courseId === 0){
             // TODO: Don't just log to the console, give a user friendly error
             console.log('Error with presenting course');
             return;
         }
-        console.log('course: ', course);
+        this.router.navigate(['/management', 'courses', 'edit', courseId]);
         return;
     }
     deleteCourse(courseId: number){
