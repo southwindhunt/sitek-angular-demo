@@ -1,0 +1,39 @@
+<div class="container">
+    <h2>Create Instructor</h2>
+    <br />
+    <div class="row">
+        <form [formGroup]="addInstructorForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label>First Name: <span class="required-field-marker">*</span></label>
+                <input class="form-control" type="text" formControlName="firstName"/>
+            </div>
+            <div class="form-group">
+                <label>Last Name: <span class="required-field-marker">*</span></label>
+                <input class="form-control" type="text" formControlName="lastName"/>
+            </div>
+            <div class="form-group">
+                <label>Disciplines: <span class="required-field-marker">*</span></label>
+                <select class="form-control" type="text" formControlName="discipline">
+                    <option value="null">Select a value</option>
+                    <option *ngFor="let discipline of disciplines" [value]="discipline.id">{{ discipline.name }}</option>
+                </select>
+            </div>
+            <div class="form-group" formArrayName="interests">
+                <div class="form-group">
+                    <label>Interests: </label>
+                    <br />
+                    <button type="button" class="btn btn-success" (click)="addInterest()">Add interest:</button>
+                    <button type="button" class="btn btn-danger" *ngIf="interests?.controls?.length" (click)="removeInterest()">Remove interest:</button>
+                </div>
+                <div *ngFor="let hobbyControl of interests?.controls; let i = index" class="form-group">
+                    <input class="form-control" type="text" [formControlName]="i"/>
+                </div>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary mr-2" [disabled]="!addInstructorForm.valid">Submit</button>
+                <button type="reset" class="btn btn-warning mr-2">Reset</button>
+                <a [routerLink]="['/management', 'instructors']" class="btn btn-link mr-2">Back</a>
+            </div>
+        </form>
+    </div>
+</div>

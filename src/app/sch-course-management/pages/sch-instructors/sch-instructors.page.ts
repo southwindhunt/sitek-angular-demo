@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { Router } from "@angular/router";
 
 import { BasePage } from "src/app/sch-common/pages/base.page";
 import { Instructor } from '../../../sch-common/models';
@@ -15,7 +16,7 @@ export class SchInstructorsPage extends BasePage{
     instructors: Array<Instructor> = [];
     disciplines: Array<Discipline> = [];
 
-    constructor(private instructorsService: InstructorsService){
+    constructor(private instructorsService: InstructorsService, private router: Router){
         super();
     }
 
@@ -50,7 +51,13 @@ export class SchInstructorsPage extends BasePage{
     }
 
     editInstructor(instructorId: number){
-        
+        if(instructorId === 0){
+            // TODO: Don't just log to the console, give a user friendly error
+            console.log('Error with presenting instructor');
+            return;
+        }
+        this.router.navigate(['/management', 'instructors', 'edit', instructorId]);
+        return;
     }
     deleteInstructor(instructorId: number){
         var loadingKey = 'deleteInstructor';

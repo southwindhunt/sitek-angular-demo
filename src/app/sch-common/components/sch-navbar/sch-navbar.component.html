@@ -5,10 +5,10 @@
             true}">Courses</a></li>
         <li class="navbar-link"><a [routerLink]="['/management', 'instructors']" routerLinkActive='active' [routerLinkActiveOptions]="{exact:
             true}">Instructors</a></li>
-        <li class="navbar-link"><a [routerLink]="['/management', 'students']" routerLinkActive='active' [routerLinkActiveOptions]="{exact:
+        <!-- <li class="navbar-link"><a [routerLink]="['/management', 'students']" routerLinkActive='active' [routerLinkActiveOptions]="{exact:
             true}">Students</a></li>
         <li class="navbar-link"><a [routerLink]="['/reports']" routerLinkActive='active' [routerLinkActiveOptions]="{exact:
-            true}">Reports</a></li>
+            true}">Reports</a></li> -->
         <li class="navbar-link"><a [routerLink]="['/']" *ngIf="isLoggedIn; else loginprompt">Log Out</a></li>
         <ng-template #loginprompt>
             <li class="navbar-link"><a [routerLink]="['/']">Log In</a></li>

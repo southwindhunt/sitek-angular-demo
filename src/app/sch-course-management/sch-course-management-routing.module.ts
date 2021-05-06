@@ -4,6 +4,7 @@ import { SchCourseManagementPage } from './pages/sch-course-management.page';
 import { SchCoursesPage } from './pages/sch-courses/sch-courses.page';
 import { SchInstructorsPage } from './pages/sch-instructors/sch-instructors.page';
 import { SchAddCoursePage } from './pages/sch-add-course/sch-add-course.page';
+import { SchAddInstructorPage } from './pages/sch-add-instructor/sch-add-instructor.page';
 
 const routes: Routes = [
     {
@@ -29,6 +30,19 @@ const routes: Routes = [
             {
                 path: 'courses/edit',
                 redirectTo: 'courses/add',
+                pathMatch: 'full'
+            },
+            {
+                path: 'instructors/add',
+                component: SchAddInstructorPage
+            },
+            {
+                path: 'instructors/edit/:id',
+                component: SchAddInstructorPage
+            },
+            {
+                path: 'instructors/edit',
+                redirectTo: 'instructors/add',
                 pathMatch: 'full'
             }
         ]

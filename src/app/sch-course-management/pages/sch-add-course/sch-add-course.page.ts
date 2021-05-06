@@ -31,8 +31,8 @@ export class SchAddCoursePage extends BasePage{
         }
     }
 
-    saveCourse(){
-        this.courseService.saveCourse(this.course).subscribe(res =>{
+    saveCourse(courseValue: Course){
+        this.courseService.saveCourse(courseValue as Course).subscribe(res =>{
             this.router.navigate(['management', 'courses']);
         }, err=>{
             console.log('We had an error on save');

@@ -66,6 +66,7 @@ export class CoursesService{
     }
 
     private addCourse(course: Course): Observable<Course>{
+        course.id = this.courses.length;
         this.courses.push(course);
         return of(course);
     }

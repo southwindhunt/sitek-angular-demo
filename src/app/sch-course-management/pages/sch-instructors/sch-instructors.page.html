@@ -1,10 +1,12 @@
 <h2>Instructors</h2>
 <div>
+    <a class="btn btn-primary" [routerLink]="['/management', 'instructors', 'add']">Create Instructor</a>
     <table class="table">
         <thead>
             <tr>
                 <th>Full Name</th>
                 <th>Instructor Discipline</th>
+                <th>Interests</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -12,6 +14,7 @@
             <tr *ngFor='let instructor of instructors'>
                 <td>{{ instructor.firstName + " " + instructor.lastName }}</td>
                 <td>{{ instructor.discipline }}</td>
+                <td>{{ instructor.interests| ArrayToSeparatedString }}</td>
                 <td class="control-column">
                     <button type="button" class="btn btn-primary" (click)="editInstructor(instructor.id)">Edit</button>
                     <button type="button" class="btn btn-danger" (click)="deleteInstructor(instructor.id)">Delete</button>
